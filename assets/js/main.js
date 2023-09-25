@@ -232,3 +232,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+
+function closeMobileNav() {
+  document.querySelector('body').classList.remove('mobile-nav-active');
+  mobileNavShow.classList.remove('d-none');
+  mobileNavHide.classList.remove('d-none');
+}
+
+
+// Add event listeners to the navigation links
+document.addEventListener('DOMContentLoaded', function () {
+  const navLinks = document.querySelectorAll('.navbar a');
+
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const sectionId = this.getAttribute('href').substring(1);
+      scrollToSection(sectionId);
+      closeMobileNav(); // Add this line to close the mobile navigation
+    });
+  });
+});
